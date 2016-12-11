@@ -1,0 +1,11 @@
+démarre,serveur|Minecraft|=startM
+allume,serveur|Minecraft|=startM
+démarre,télé|télévision|=../bravia-auth-and-remote/send_command.sh 192.168.0.28 AAAAAQAAAAEAAAAuAw==
+allume,télé|télévision|=../bravia-auth-and-remote/send_command.sh 192.168.0.28 AAAAAQAAAAEAAAAuAw==
+arrête,télé|télévision|=../bravia-auth-and-remote/send_command.sh 192.168.0.28 AAAAAQAAAAEAAAAvAw==
+éteins,télé|télévision|=../bravia-auth-and-remote/send_command.sh 192.168.0.28 AAAAAQAAAAEAAAAvAw==
+monte,son|télé|télévsion=./resources/sound_up.sh
+augmente,son|télé|télévsion=./resources/sound_up.sh
+baisse,son|télé|télévsion=./resources/sound_down.sh
+diminue,son|télé|télévsion=./resources/sound_down.sh
+coupe,son|télé|télévsion=../bravia-auth-and-remote/send_command.sh 192.168.0.28 AAAAAQAAAAEAAAAUAw==
