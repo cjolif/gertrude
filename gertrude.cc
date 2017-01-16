@@ -158,7 +158,7 @@ void OpenStream(FILE **stream, char **buf, size_t *len, SF_INFO *sfinfo, SNDFILE
 
   if (!(*outfile = sf_open_fd(fileno(*stream), SFM_WRITE, sfinfo, 1)))
   {
-    printf("Error : could not open file : %s\n", "recorded.was");
+    std::cerr << "Error: could not open /tmp/sound.was" << std::endl;
     puts(sf_strerror(NULL));
     exit(1);
   }
@@ -242,7 +242,7 @@ void RecognizeSpeech(int rate, char *buf, size_t len)
     free(base64);
     char *jsonstr = json_dumps(json, JSON_ENCODE_ANY);
     char *header = static_cast<char *>(malloc(50));
-    sprintf(header, "Content-Length: %lu", std::strlen(jsonstr));
+    sprintf(header, "Content-Length: %zu", std::strlen(jsonstr));
     struct curl_slist *list = curl_slist_append(NULL, header);
     list = curl_slist_append(list, "Content-Type: application/json");
     //curl_easy_setopt(curl, CURLOPT_VERBOSE, 1);
@@ -364,12 +364,12 @@ void readSoundFile(FILE *file, char **code, size_t *n)
 }
 #endif
 
-PortAudioRead* InitDing()
+PortAudioRead* InitDong()
 {
    SF_INFO sf_info;
    SNDFILE *snd_file = sf_open("./resources/dong.wav", SFM_READ, &sf_info);
    if (snd_file == NULL) {
-     std::cerr << "Ding file is not available" << std::endl;
+     std::cerr << "Dong file is not available" << std::endl;
      return NULL;
    } else {
     return new PortAudioRead(snd_file, sf_info.frames, sf_info.channels) ;
@@ -439,9 +439,9 @@ int main(int argc, char *argv[])
   std::string resource_filename = "resources/common.res";
   std::string model_filename = "resources/Gertrude.pmdl";
   std::string sensitivity_str = "0.5";
-  float audio_gain = 1;
+  float audio_gain = 2;
 
-  PortAudioRead* pa_read = InitDing();
+  PortAudioRead* pa_read = InitDong();
 
   InitCommands();
 
@@ -518,7 +518,7 @@ int main(int argc, char *argv[])
 #endif
           sf_close(outfile);
           // let the user know we are sending something to Google
-          std::cout << "sending information to Goole" << std::endl;
+          std::cout << "sending information to Google" << std::endl;
           pa_read->Start();
           RecognizeSpeech(detector.SampleRate(), buf, len);
           free(buf);

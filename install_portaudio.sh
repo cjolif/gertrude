@@ -7,10 +7,10 @@ echo "Installing portaudio"
 
 if [ ! -e pa_stable_v19_20140130.tgz ]; then
   wget -T 10 -t 3 \
-    http://www.portaudio.com/archives/pa_stable_v19_20140130.tgz || exit 1;
+    http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz || exit 1;
 fi
 
-tar -xovzf pa_stable_v19_20140130.tgz || exit 1
+tar -xovzf pa_stable_v190600_20161030.tgz || exit 1
 
 cd portaudio
 patch < ../patches/portaudio.patch
